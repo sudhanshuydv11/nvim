@@ -20,17 +20,24 @@ vim.g.clipboard = {
     cache_enabled = 0,
 }
 
-vim.api.nvim_create_autocmd('BufEnter',{
+vim.api.nvim_create_autocmd({'BufEnter'},
+	{
 	pattern='*',
-callback=utils.handleEdit
+callback=function()
+		utils.handleEdit()
+	end
 })
-
-local show_diagnostics = function()
-  vim.diagnostic.open_float(nil, { focus = false })
-end
 
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   pattern = "*",
-  callback = show_diagnostics,
+  callback = utils.showDiagnostics,
+})
+
+vim.api.nvim_create_autocmd({'BufLeave'},
+	{
+	pattern='*',
+callback=function()
+		utils.saveFile()
+	end
 })
 

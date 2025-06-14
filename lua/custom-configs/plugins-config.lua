@@ -8,8 +8,7 @@ require'nvim-web-devicons'.setup {
 }
 
 require('nvim-tree').setup({
-    -- Your Nvim Tree configuration options
-    git = {
+git = {
         enable = true,
     },
     renderer = {
@@ -18,15 +17,52 @@ require('nvim-tree').setup({
         default = '',
         symlink = '',
         git = {
-          unstaged = "✗",
-          staged = "✓",
-          untracked = "★",
+          unstaged = "US",
+          staged = "S",
+          untracked = "UT",
         },
       },
     },
   },
+filters = {
+    dotfiles = true,
+  },
     view = {
         width = 30,  -- Width of the tree
-        side = 'left',  -- Position of the tree
+        side = 'right',  -- Position of the tree
+
+      preserve_window_proportions = true,
+      ---
     },
+    --
+    actions = {
+      --
+      open_file = {
+        resize_window = false,
+        --
+      },
+      --
+    }
 })
+
+require('cmp').setup({
+   mapping = require('cmp').mapping.preset.insert({
+    ['<Down>'] = require('cmp').mapping.select_next_item({ behavior = require('cmp').SelectBehavior.Select }),
+    ['<Up>'] = require('cmp').mapping.select_prev_item({ behavior = require('cmp').SelectBehavior.Select }),
+    ['<CR>'] = require('cmp').mapping.confirm({ select = true }),
+  }),
+  -- Enable sources for completion
+  sources = {
+    { name = 'copilot' },         -- GitHub Copilot
+    { name = 'nvim_lsp' },        -- LSP (Language Server Protocol)
+    { name = 'buffer' },          -- Completion from current buffer
+    { name = 'path' },            -- File path completion
+  },
+})
+
+require("CopilotChat").setup({
+  mappings = {
+    complete = false, -- disables the <Tab> mapping for completion
+  }
+})
+

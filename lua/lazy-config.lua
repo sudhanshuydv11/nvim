@@ -1,4 +1,5 @@
 vim.opt.runtimepath:prepend("~/.local/share/nvim/lazy/lazy.nvim")
+
 require('lazy').setup({
 	'nvim-tree/nvim-tree.lua',
 	'neovim/nvim-lspconfig',  -- LSP configuration
@@ -52,11 +53,12 @@ require('lazy').setup({
       { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
+    build = "make tiktoken",
+		    opts = {
+      auto_insert_mode= true,
+	chat_autocomplete=true,
+	insert_at_end=true
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 	{
   	"hrsh7th/nvim-cmp",
@@ -67,6 +69,6 @@ require('lazy').setup({
     	"hrsh7th/cmp-buffer",
     	"hrsh7th/cmp-path",
   	}
-  }
+  },
 })
 
