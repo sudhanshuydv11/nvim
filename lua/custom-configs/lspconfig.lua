@@ -1,22 +1,37 @@
-local lspconfig = require('lspconfig')
-
 vim.diagnostic.config({
   update_in_insert = true,
 })
-
 -- Configure the Biome LSP
+local lspconfig = require('lspconfig')
+
 lspconfig.biome.setup({
-    filetypes = { "biome", "typescript", "typescriptreact", "typescript.tsx" },       -- Specify the file types the LSP should handle
-    root_dir = lspconfig.util.root_pattern(".git", "package.json", "biome.json"),  -- Adjust root detection
-    settings = {
-        -- Add any specific settings for Biome here
-    },
+  root_dir = function(fname)
+          return lspconfig.util.root_pattern("biome.json")(fname)
+            or lspconfig.util.find_package_json_ancestor(fname)
+            or lspconfig.util.find_node_modules_ancestor(fname)
+            or lspconfig.util.find_git_ancestor(fname)
+        end,
+  settings = {
+    -- Add any specific settings for Biome here
+  },
 })
 
-lspconfig.ts_ls.setup({
-    	root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),  -- Adjust root detection
-    	settings = {
-        -- Add any specific settings for TypeScript here
-        	documentFormatting = false,  -- Disable formatting to avoid conflicts with other formatters
-    },
+--[[lspconfig.ts_ls.setup({
+  root_dir = lspconfig.util.root_pattern("tsconfig.json"),
+  settings = {
+    documentFormatting = false, -- Disable formatting to avoid conflicts
+  },
 })
+	]]--
+
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }, -- Recognize the `vim` global
+      },
+	telemetry = { enable = false },
+    },
+  },
+})
+

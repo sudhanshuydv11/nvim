@@ -2,9 +2,10 @@ vim.opt.runtimepath:prepend("~/.local/share/nvim/lazy/lazy.nvim")
 
 require('lazy').setup({
 	'nvim-tree/nvim-tree.lua',
-	'neovim/nvim-lspconfig',  -- LSP configuration
-	'williamboman/mason.nvim',        -- Package manager for external tools
-    	'williamboman/mason-lspconfig.nvim',
+    "neovim/nvim-lspconfig",  -- LSP configuration
+	'williamboman/mason.nvim',
+	'nanozuki/tabby.nvim',
+	'williamboman/mason-lspconfig.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'tpope/vim-fugitive',
 	{
@@ -36,7 +37,8 @@ require('lazy').setup({
                     "typescript", 
                     "json", 
                     "tsx",  
-                    "lua" 
+                    "lua",
+		    "java"
                 },  -- Install all parsers
                 highlight = {
                     enable = true,  -- Enable syntax highlighting
