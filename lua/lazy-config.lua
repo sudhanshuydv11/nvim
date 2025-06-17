@@ -2,10 +2,17 @@ vim.opt.runtimepath:prepend("~/.local/share/nvim/lazy/lazy.nvim")
 
 require('lazy').setup({
 	'nvim-tree/nvim-tree.lua',
-    "neovim/nvim-lspconfig",  -- LSP configuration
-	'williamboman/mason.nvim',
+	"neovim/nvim-lspconfig",  -- LSP configuration	
+	"mason-org/mason.nvim",        --
+    	{
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {      
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
+},
 	'nanozuki/tabby.nvim',
-	'williamboman/mason-lspconfig.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'tpope/vim-fugitive',
 	{
@@ -72,5 +79,6 @@ require('lazy').setup({
     	"hrsh7th/cmp-path",
   	}
   },
+	{ 'stevearc/dressing.nvim', event = 'VeryLazy' }
 })
 

@@ -2,7 +2,11 @@ vim.keymap.set({'n','v'}, '<C-c>', '"+y', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-v>', '"+p', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-x>', '"+d', { noremap = true, silent = true })
 
-vim.keymap.set("n", "<C-c>", ":CopilotChat<CR>", { desc = "Open Copilot Chat" })
+vim.keymap.set("n", "<C-c>", function()
+  vim.cmd("CopilotChatClose")
+  vim.cmd("CopilotChat")
+end, { desc = "Toggle Copilot Chat" })
+
 
 vim.keymap.set({"n", "v"}, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-s>", "<C-o>:w<CR>", { noremap = true, silent = true })
