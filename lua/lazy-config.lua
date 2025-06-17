@@ -85,7 +85,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require("gruvbox").setup({
-        contrast = "hard", -- options: "hard", "soft", "medium"
+        contrast = "soft", -- options: "hard", "soft", "medium"
         transparent_mode = false,
       })
       vim.cmd.colorscheme("gruvbox")
