@@ -7,7 +7,7 @@ vim.diagnostic.config({
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-8" }
+capabilities.offsetEncoding = { "utf-16" }
 
 -- Configure the Biome LSP
 local lspconfig = require('lspconfig')

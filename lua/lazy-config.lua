@@ -7,7 +7,7 @@ require('lazy').setup({
     	{
     "mason-org/mason-lspconfig.nvim",
     opts = {},
-    dependencies = {      
+    dependencies = {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
     },
@@ -79,6 +79,21 @@ require('lazy').setup({
     	"hrsh7th/cmp-path",
   	}
   },
-	{ 'stevearc/dressing.nvim', event = 'VeryLazy' }
+	{ 'stevearc/dressing.nvim', event = 'VeryLazy' },
+	{
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        contrast = "hard", -- options: "hard", "soft", "medium"
+        transparent_mode = false,
+      })
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  },
+ {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    }
 })
 
