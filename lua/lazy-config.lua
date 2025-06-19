@@ -1,12 +1,11 @@
-vim.opt.runtimepath:prepend("~/.local/share/nvim/lazy/lazy.nvim")
+vim.opt.runtimepath:append("~/.local/share/nvim/lazy/lazy.nvim")
 
 require('lazy').setup({
 	'nvim-tree/nvim-tree.lua',
-	"neovim/nvim-lspconfig",  -- LSP configuration	
-	"mason-org/mason.nvim",        --
+	"neovim/nvim-lspconfig" ,  -- LSP configuration	
+	"mason-org/mason.nvim",
     	{
     "mason-org/mason-lspconfig.nvim",
-    opts = {},
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
@@ -80,20 +79,10 @@ require('lazy').setup({
   	}
   },
 	{ 'stevearc/dressing.nvim', event = 'VeryLazy' },
-	{
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        contrast = "soft", -- options: "hard", "soft", "medium"
-        transparent_mode = false,
-      })
-      vim.cmd.colorscheme("gruvbox")
-    end,
-  },
  {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+    },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true}
 })
 

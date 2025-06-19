@@ -9,9 +9,8 @@ function utils.handleEdit()
 end
 
 function utils.saveFile()
-    if vim.bo.modified then
+    if vim.bo.modified and vim.bo.buftype==''  then
 	vim.cmd('w')
-	print("File saved.")
     else
     end
 end

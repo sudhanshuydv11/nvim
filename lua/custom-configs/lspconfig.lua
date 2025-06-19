@@ -1,11 +1,3 @@
-vim.diagnostic.config({
-    virtual_text =false,
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-  severity_sort = true,
-})
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 
@@ -25,15 +17,7 @@ capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }, -- Recognize the `vim` global
-      },
-	telemetry = { enable = false },
-    },
-  },
+	capabilities = capabilities
 })
 
 lspconfig.biome.setup({

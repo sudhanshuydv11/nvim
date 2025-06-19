@@ -40,9 +40,6 @@ diagnostics = {
       },
     },
   },
-filters = {
-    dotfiles = true,
-  },
     view = {
         width = 30,  -- Width of the tree
         side = 'right',  -- Position of the tree
@@ -68,6 +65,7 @@ require('cmp').setup({
   }),
   -- Enable sources for completion
   sources = {
+    { name = 'copilot' },          -- Copilot completion
     { name = 'nvim_lsp' },        -- LSP (Language Server Protocol)
     { name = 'buffer' },          -- Completion from current buffer
     { name = 'path' },            -- File path completion

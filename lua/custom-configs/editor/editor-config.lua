@@ -2,24 +2,23 @@ local config_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
 package.path = config_path .. "lua/?.lua;" .. package.path
 local utils=require('utils')
 
--- For Lua configuration (init.lua)
+vim.o.wrap = false
+vim.o.sidescroll = 1
+vim.o.sidescrolloff = 1
+
 vim.wo.number = true  -- Enable line numbers
-vim.opt.termguicolors = true
+vim.opt.termguicolors = true -- Enable 24-bit RGB colors in the terminal
 vim.opt.updatetime = 300
 
-vim.g.clipboard = {
-    name = 'WslClipboard',
-    copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
-    },
-    paste = {
-      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = 0,
-}
+vim.diagnostic.config({
+    virtual_text =false,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
+})
 
+vim.opt.clipboard = 'unnamedplus'
 vim.api.nvim_create_autocmd({'BufEnter'},
 	{
 	pattern='*',
