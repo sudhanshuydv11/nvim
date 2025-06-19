@@ -1,4 +1,3 @@
-
 vim.keymap.set('v', '<C-c>','"+y', { noremap = true, silent = true })
 vim.keymap.set('v', '<C-x>','"+d', { noremap = true, silent = true })
 
@@ -17,9 +16,7 @@ local nvimApi = require('nvim-tree.api')
 nvimApi.node.open.vertical()
 end}) -- use on attch of nvim tree config if you ever move it
 
-
-vim.keymap.set('t', '<C-q>', [[<C-\><C-n>:bd!<CR>]], { noremap = true, silent = true })
-vim.keymap.set({'n','v'}, '<C-q>', [[<C-\><C-n>:bd<CR>]], { noremap = true, silent = true })
+vim.keymap.set({'n','v','t'}, '<C-q>', [[<C-\><C-n>:bd!<CR>]], { noremap = true, silent = true })
 
 vim.keymap.set('i', '<C-q>', function()
   vim.cmd('stopinsert')
