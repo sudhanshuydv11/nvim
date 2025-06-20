@@ -88,5 +88,8 @@ require('lazy').setup({
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true}
 })
 
+
 require('plugins-config')
+require('my-lsp-config.lsp-config')
+require('my-mason-config.mason-config')
 
