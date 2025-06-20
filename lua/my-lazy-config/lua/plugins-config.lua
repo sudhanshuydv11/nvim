@@ -81,6 +81,7 @@ window = {
   mappings = {
     complete = false, -- disables the <Tab> mapping for completion
   },
+	chat_autocomplete = true,
     auto_insert_mode = true,
     insert_at_end = true,
 })
@@ -131,3 +132,24 @@ require('tabby.tabline').set(function(line)
     hl = theme.fill,
   }
 end)
+
+require('vgit').setup()
+require("gitsigns").setup()
+require('gitblame').setup()
+require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"javascript",
+					"typescript",
+					"json",
+					"tsx",
+					"lua",
+					"java",
+				}, -- Install all parsers
+				highlight = {
+					enable = true, -- Enable syntax highlighting
+				},
+				indent = {
+					enable = true, -- Enable indentation
+				},
+			})
+
