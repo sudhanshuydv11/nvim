@@ -41,7 +41,7 @@ diagnostics = {
     },
   },
     view = {
-        width = 30,  -- Width of the tree
+        width = 20,  -- Width of the tree
         side = 'right',  -- Position of the tree
 
       preserve_window_proportions = true,      ---
@@ -72,7 +72,12 @@ require('cmp').setup({
   },
 })
 
+
 require("CopilotChat").setup({
+window = {
+ position = "vertical", -- Position of the chat window
+    width = 20        -- Height of the chat window
+  },
   mappings = {
     complete = false, -- disables the <Tab> mapping for completion
   },

@@ -42,7 +42,7 @@ vim.cmd('cnoreabbrev t T')
 
 vim.api.nvim_create_user_command('C',
 	 function()
-  vim.cmd("CopilotChatClose")
+vim.cmd("CopilotChatClose")
   vim.cmd("CopilotChat")
 	end, {})
 vim.cmd('cnoreabbrev c C')

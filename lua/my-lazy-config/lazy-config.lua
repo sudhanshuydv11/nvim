@@ -1,5 +1,7 @@
 vim.opt.runtimepath:append("~/.local/share/nvim/lazy/lazy.nvim")
 
+local config_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+package.path = config_path .. "lua/?.lua;" .. package.path
 require('lazy').setup({
 	'nvim-tree/nvim-tree.lua',
 	"neovim/nvim-lspconfig" ,  -- LSP configuration	
@@ -85,4 +87,6 @@ require('lazy').setup({
     },
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true}
 })
+
+require('plugins-config')
 
