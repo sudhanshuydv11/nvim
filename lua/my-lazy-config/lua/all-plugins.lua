@@ -17,12 +17,12 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" }, -- Required dependency
 	},
 	{
-		"lewis6991/gitsigns.nvim"
+		"lewis6991/gitsigns.nvim",
 	},
-		"f-person/git-blame.nvim",
+	"f-person/git-blame.nvim",
 	{
 		"nvim-treesitter/nvim-treesitter", -- Tree-sitter support
-		build = ":TSUpdate"
+		build = ":TSUpdate",
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
@@ -30,7 +30,7 @@ require("lazy").setup({
 			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
 			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
 		},
-		build = "make tiktoken"
+		build = "make tiktoken",
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -43,11 +43,13 @@ require("lazy").setup({
 		},
 	},
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- or if using mini.icons/mini.nvim
+		-- dependencies = { "echasnovski/mini.icons" },
+		opts = {},
+	},
 })
-

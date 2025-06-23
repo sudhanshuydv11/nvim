@@ -6,7 +6,7 @@ local utils = require("utils")
 vim.keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true })
 vim.keymap.set("v", "<C-x>", '"+d', { noremap = true, silent = true })
 
-vim.keymap.set({ "n", "v", "i" }, "<C-v>", function()
+vim.keymap.set({ "n", "v", "i","t","c" }, "<C-v>", function()
 	vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
 end, { noremap = true, silent = true })
 
@@ -33,12 +33,12 @@ vim.keymap.set("i", "<C-q>", function()
 	vim.cmd("q")
 end, { noremap = true, silent = true })
 
-local builtin = require("telescope.builtin")
+--[[local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<SPACE>ff", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<SPACE>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<SPACE>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<SPACE>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set({ "n", "c", "i" }, "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope help tags" })
+vim.keymap.set({ "n", "c", "i" }, "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope help tags" })--]]
 
 vim.api.nvim_create_user_command("T", function()
 	vim.cmd("botright split | terminal")

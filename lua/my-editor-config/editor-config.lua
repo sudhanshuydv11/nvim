@@ -1,9 +1,9 @@
 local config_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
 package.path = config_path .. "lua/?.lua;" .. package.path
 
-require("color-scheme")
 require("key-mappings")
 require("autocmds")
+require("color-scheme")
 
 vim.opt.autoread = true
 vim.opt.wrap = false
@@ -20,4 +20,3 @@ vim.diagnostic.config({
 })
 
 vim.opt.clipboard = "unnamedplus"
-
