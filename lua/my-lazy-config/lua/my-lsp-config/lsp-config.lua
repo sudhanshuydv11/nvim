@@ -22,7 +22,9 @@ lspconfig.biome.setup({
 	root_dir = lspconfig.util.root_pattern("biome.json"),
 })
 
-require'lspconfig'.jdtls.setup{
-    	capabilities=capabilities,
-    root_dir = lspconfig.util.root_pattern('.git', 'pom.xml', 'build.gradle'),
-}
+lspconfig.jdtls.setup({
+	root_dir = lspconfig.util.root_pattern(".git", "pom.xml", "build.gradle"),
+})
+
+lspconfig.lemminx.setup({})
+lspconfig.jsonls.setup({})

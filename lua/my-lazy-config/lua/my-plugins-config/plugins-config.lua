@@ -101,4 +101,4 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-require("fzf-lua").setup()
+require("fzf-lua").setup({})

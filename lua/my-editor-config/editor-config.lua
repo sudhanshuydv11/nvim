@@ -8,7 +8,6 @@ require("color-scheme")
 vim.opt.autoread = true
 vim.opt.wrap = false
 vim.wo.number = true
-vim.opt.termguicolors = true
 vim.opt.updatetime = 300
 
 vim.diagnostic.config({
