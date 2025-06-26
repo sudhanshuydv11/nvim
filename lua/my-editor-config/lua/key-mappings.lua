@@ -13,8 +13,7 @@ end, { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-s>", utils.saveFile, { noremap = true, silent = true })
 
-vim.keymap.set("i", "<C-z>", "<C-o>u", { noremap = true })
-vim.keymap.set({ "n", "v" }, "<C-z>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({ "i", "n", "v" }, "<C-z>", "<C-o>u", { noremap = true })
 vim.keymap.set("i", "<C-y>", "<C-o><C-r>", { noremap = true })
 
 vim.keymap.set("n", "<S-Tab>", "", {
@@ -34,13 +33,16 @@ vim.keymap.set("i", "<C-q>", function()
 	vim.cmd("q")
 end, { noremap = true, silent = true })
 
+vim.keymap.set({ "v", "n", "t" }, "<C-a>", "ggVG", { noremap = true, silent = true })
+vim.keymap.set("v", "<BS>", '"_d', { noremap = true, silent = true })
+vim.keymap.set("i", "<C-a>", "<Esc>ggVG", { noremap = true, silent = true })
+
 local fzf = require("fzf-lua")
 vim.keymap.set("n", "<SPACE>ff", fzf.files, { desc = "FzfLua find files" })
 vim.keymap.set("n", "<SPACE>fg", fzf.live_grep, { desc = "FzfLua grep (project search)" })
 vim.keymap.set("n", "<SPACE>fb", fzf.buffers, { desc = "FzfLua buffers" })
 vim.keymap.set("n", "<SPACE>fh", fzf.help_tags, { desc = "FzfLua help tags" })
 vim.keymap.set({ "n", "c", "i" }, "<C-f>", fzf.lgrep_curbuf, { desc = "FzfLua fuzzy lines in current buffer" })
-
 
 vim.api.nvim_create_user_command("T", function()
 	vim.cmd("botright split | terminal")

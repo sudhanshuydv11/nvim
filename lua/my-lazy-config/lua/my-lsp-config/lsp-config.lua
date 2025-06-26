@@ -1,6 +1,8 @@
+local config_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+package.path = config_path .. "lua/?.lua;" .. package.path
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
-
 -- Configure the Biome LSP
 local lspconfig = require("lspconfig")
 
@@ -23,7 +25,8 @@ lspconfig.biome.setup({
 })
 
 lspconfig.jdtls.setup({
-	root_dir = lspconfig.util.root_pattern(".git", "pom.xml", "build.gradle"),
+	capabilities = capabilities,
+	root_dir = lspconfig.util.root_pattern("pom.xml", "build.gradle", "settings.gradle", ".git"),
 })
 
 lspconfig.lemminx.setup({})

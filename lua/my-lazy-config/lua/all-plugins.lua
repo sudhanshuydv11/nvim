@@ -2,6 +2,7 @@ require("lazy").setup({
 	"nvim-tree/nvim-tree.lua",
 	"neovim/nvim-lspconfig", -- LSP configuration
 	"mason-org/mason.nvim",
+
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
