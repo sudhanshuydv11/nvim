@@ -15,7 +15,9 @@ vim.keymap.set("i", "<C-s>", utils.saveFile, { noremap = true, silent = true })
 
 vim.keymap.set({ "i", "n", "v" }, "<C-z>", "<C-o>u", { noremap = true })
 vim.keymap.set("i", "<C-y>", "<C-o><C-r>", { noremap = true })
-
+vim.keymap.set("i", "<C-w>w", function()
+	vim.cmd("bnext")
+end, { noremap = true })
 vim.keymap.set("n", "<S-Tab>", "", {
 	noremap = true,
 	silent = true,

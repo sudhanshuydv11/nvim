@@ -1,8 +1,16 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_buf_set_option(0, "buftype", "nofile")
+local function dofile_relative(relpath)
+	local info = debug.getinfo(2, "S")
+	local src = info.source:sub(2)
+	local dir = src:match("(.*/)")
+	return dofile(dir .. relpath)
+end
+local on_attach = dofile_relative("utils.lua")
 
 require("nvim-tree").setup({
+	on_attach = on_attach, -- Attach custom key mappings
 	tab = {
 		sync = {
 			open = true,
