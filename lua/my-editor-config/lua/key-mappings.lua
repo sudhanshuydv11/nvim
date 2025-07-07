@@ -10,7 +10,7 @@ vim.keymap.set({ "n", "v", "i", "t", "c" }, "<C-v>", function()
 	vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
 end, { noremap = true, silent = true })
 
-vim.keymap.set({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<C-s>", utils.saveFile, { noremap = true, silent = true })
 vim.keymap.set("i", "<C-s>", utils.saveFile, { noremap = true, silent = true })
 
 vim.keymap.set({ "i", "n", "v" }, "<C-z>", "<C-o>u", { noremap = true })

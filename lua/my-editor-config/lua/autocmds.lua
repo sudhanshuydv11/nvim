@@ -21,3 +21,10 @@ vim.api.nvim_create_autocmd({ "BufLeave" }, {
 		utils.saveFile()
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = "*",
+	callback = function()
+		utils.formatBuffer()
+	end,
+})
