@@ -13,22 +13,23 @@ end, { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<C-s>", utils.saveFile, { noremap = true, silent = true })
 vim.keymap.set("i", "<C-s>", utils.saveFile, { noremap = true, silent = true })
 
-vim.keymap.set({ "i", "n", "v" }, "<C-z>", "<C-o>u", { noremap = true })
+vim.keymap.set("n", "<S-Tab>", function()
+	vim.cmd("tabn")
+end, { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<C-z>", "u", { noremap = true })
+vim.keymap.set({ "i" }, "<C-z>", "<C-o>u", { noremap = true })
 vim.keymap.set("i", "<C-y>", "<C-o><C-r>", { noremap = true })
 vim.keymap.set("i", "<C-w>w", function()
 	vim.cmd("bnext")
 end, { noremap = true })
-vim.keymap.set("n", "<S-Tab>", "", {
-	noremap = true,
-	silent = true,
-	nowait = true,
-	callback = function()
-		local nvimApi = require("nvim-tree.api")
-		nvimApi.node.open.vertical()
-	end,
-}) -- use on attch of nvim tree config if you ever move it
+vim.keymap.set("n", "<S-h>", function()
+	local nvimApi = require("nvim-tree.api")
+	nvimApi.node.open.vertical()
+end, { noremap = true, silent = true, nowait = true }) -- use on attch of nvim tree config if you ever move it
 
-vim.keymap.set({ "n", "v", "t" }, "<C-q>", [[<C-\><C-n>:bd!<CR>]], { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "t" }, "<C-q>", function()
+	vim.cmd("q")
+end, { noremap = true, silent = true })
 
 vim.keymap.set("i", "<C-q>", function()
 	vim.cmd("stopinsert")
