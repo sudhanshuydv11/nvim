@@ -18,6 +18,7 @@ require("nvim-tree").setup({
 	},
 	git = {
 		enable = true,
+		ignore = false, -- Show ignored files
 	},
 	diagnostics = {
 		enable = true,
