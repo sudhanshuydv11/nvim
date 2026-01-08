@@ -15,6 +15,7 @@ local formattersTable = {
 	javascriptreact = biomeFormatter,
 	typescriptreact = biomeFormatter,
 	css = biomeFormatter,
+	svelte= biomeFormatter
 }
 
 function utils.formatBuffer()

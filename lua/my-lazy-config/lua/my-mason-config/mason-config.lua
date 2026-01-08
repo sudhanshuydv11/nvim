@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
 		"ts_ls",
 		"lua_ls",
 		"jdtls",
+		"jsonls",
 		"biome@2.0.0-beta.6",
 		"biome@2.0.6",
 	},

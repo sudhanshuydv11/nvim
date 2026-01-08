@@ -15,6 +15,8 @@ lspconfig.ts_ls.setup({
 	},
 })
 
+require("lspconfig").svelte.setup({})
+
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 })
