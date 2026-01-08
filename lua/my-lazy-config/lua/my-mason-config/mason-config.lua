@@ -7,5 +7,6 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"biome@2.0.0-beta.6",
 		"biome@2.0.6",
+		"biome@2.2.4",
 	},
 })

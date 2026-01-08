@@ -18,9 +18,14 @@ require("nvim-tree").setup({
 	},
 	git = {
 		enable = true,
+		ignore = false, -- Show ignored files
 	},
 	diagnostics = {
 		enable = true,
+	},
+	update_focused_file = {
+		enable = true, -- update the focused file in the tree on BufEnter
+		update_cwd = true, -- update the root directory of the tree on BufEnter
 	},
 	renderer = {
 		highlight_git = "name",
