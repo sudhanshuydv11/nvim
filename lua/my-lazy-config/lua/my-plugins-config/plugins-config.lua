@@ -36,23 +36,6 @@ require("CopilotChat").setup({
 require("vgit").setup()
 require("gitsigns").setup()
 require("gitblame").setup()
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"javascript",
-		"typescript",
-		"json",
-		"tsx",
-		"lua",
-		"java",
-	}, -- Install all parsers
-	highlight = {
-		enable = true, -- Enable syntax highlighting
-	},
-	indent = {
-		enable = true, -- Enable indentation
-	},
-})
-
 require("fzf-lua").setup({})
 
 local buf_name = require("tabby.feature.buf_name")
