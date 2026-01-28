@@ -110,3 +110,75 @@ require("tabby.tabline").set(function(line)
 		hl = theme.fill,
 	}
 end)
+
+require("lualine").setup({
+	options = {
+		icons_enabled = true,
+		theme = "gruvbox",
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		globalstatus = false,
+	},
+
+	sections = {
+		lualine_a = {
+			{
+				"mode",
+				icon = "",
+				separator = { left = "", right = "" },
+			},
+		},
+
+		lualine_b = {
+			{ "branch", icon = "" },
+			{
+				"diff",
+				symbols = { added = " ", modified = " ", removed = " " },
+				colored = true,
+			},
+		},
+
+		lualine_c = {
+			{
+				"filename",
+				path = 1,
+				symbols = {
+					modified = " ●",
+					readonly = " ",
+					unnamed = "[No Name]",
+				},
+			},
+		},
+
+		lualine_x = {
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = {
+					error = " ",
+					warn = " ",
+					info = " ",
+					hint = "󰌵 ",
+				},
+				colored = true,
+			},
+			{ "filetype", icon_only = false },
+		},
+
+		lualine_y = {
+			{ "progress", icon = "󰉸" },
+		},
+
+		lualine_z = {
+			{
+				"location",
+				separator = { left = "", right = "" },
+			},
+		},
+	},
+
+	inactive_sections = {
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+	},
+})
