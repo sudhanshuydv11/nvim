@@ -52,18 +52,6 @@ local theme = {
 
 require("tabby.tabline").set(function(line)
 	return {
-		{
-			{
-				string.format(
-					" %d/%d ",
-					vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage()),
-					#vim.api.nvim_list_tabpages()
-				),
-				hl = theme.head,
-			},
-
-			line.sep("", theme.head, theme.fill),
-		},
 		line.tabs().foreach(function(tab)
 			local hl = tab.is_current() and theme.current_tab or theme.tab
 			local buf_label = ""
@@ -92,6 +80,20 @@ require("tabby.tabline").set(function(line)
 				margin = " ",
 			}
 		end),
+		line.spacer(),
+		{
+			line.sep("", theme.head, theme.fill),
+			{
+				string.format(
+					" %d/%d ",
+					vim.api.nvim_tabpage_get_number(vim.api.nvim_get_current_tabpage()),
+					#vim.api.nvim_list_tabpages()
+				),
+				hl = theme.head,
+			},
+
+			line.sep("", theme.head, theme.fill),
+		},
 		line.spacer(),
 		line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
 			return {
@@ -124,30 +126,12 @@ require("lualine").setup({
 		lualine_a = {
 			{
 				"mode",
-				icon = "",
 				separator = { left = "", right = "" },
 			},
 		},
 
 		lualine_b = {
 			{ "branch", icon = "" },
-			{
-				"diff",
-				symbols = { added = " ", modified = " ", removed = " " },
-				colored = true,
-			},
-		},
-
-		lualine_c = {
-			{
-				"filename",
-				path = 1,
-				symbols = {
-					modified = " ●",
-					readonly = " ",
-					unnamed = "[No Name]",
-				},
-			},
 		},
 
 		lualine_x = {
@@ -162,11 +146,6 @@ require("lualine").setup({
 				},
 				colored = true,
 			},
-			{ "filetype", icon_only = false },
-		},
-
-		lualine_y = {
-			{ "progress", icon = "󰉸" },
 		},
 
 		lualine_z = {
@@ -178,7 +157,6 @@ require("lualine").setup({
 	},
 
 	inactive_sections = {
-		lualine_c = { "filename" },
 		lualine_x = { "location" },
 	},
 })
