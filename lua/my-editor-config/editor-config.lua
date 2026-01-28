@@ -19,3 +19,4 @@ vim.diagnostic.config({
 })
 
 vim.opt.clipboard = "unnamedplus"
+vim.opt.fillchars = { eob = " " }
