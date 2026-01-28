@@ -3,7 +3,7 @@ package.path = config_path .. "lua/?.lua;" .. package.path
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
--- Configure the Biome LSP
+
 local lspconfig = require("lspconfig")
 
 lspconfig.ts_ls.setup({
@@ -23,6 +23,7 @@ lspconfig.lua_ls.setup({
 
 lspconfig.biome.setup({
 	capabilities = capabilities,
+	cmd = { "node_modules/.bin/biome", "lsp-proxy" },
 	root_dir = lspconfig.util.root_pattern("biome.json"),
 })
 
