@@ -15,7 +15,7 @@ lspconfig.ts_ls.setup({
 	},
 })
 
-require("lspconfig").svelte.setup({})
+lspconfig.svelte.setup({})
 
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
@@ -34,3 +34,31 @@ lspconfig.jdtls.setup({
 
 lspconfig.lemminx.setup({})
 lspconfig.jsonls.setup({})
+
+lspconfig.eslint.setup({
+	root_dir = lspconfig.util.root_pattern("eslint.config.js"),
+	settings = {
+		eslint = {
+			nodePath = "./node_modules", -- use project's eslint
+		},
+	},
+	on_attach = function(_, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			command = "EslintFixAll",
+		})
+	end,
+})
+
+-- Stylelint
+lspconfig.stylelint_lsp.setup({
+	root_dir = lspconfig.util.root_pattern(".stylelintrc"),
+	filetypes = { "css", "scss" },
+	settings = {
+		stylelintplus = {
+			autoFixOnSave = true,
+			-- use project's stylelint binary
+			stylelintConfigBasedir = vim.fn.getcwd(),
+		},
+	},
+})
