@@ -8,15 +8,7 @@ end
 local luaFormatter = function()
 	vim.cmd("silent !stylua %")
 end
-local formattersTable = {
-	lua = luaFormatter,
-	javascript = biomeFormatter,
-	typescript = biomeFormatter,
-	javascriptreact = biomeFormatter,
-	typescriptreact = biomeFormatter,
-	css = biomeFormatter,
-	svelte= biomeFormatter
-}
+local formattersTable = {}
 
 function utils.formatBuffer()
 	local fileType = vim.bo.filetype

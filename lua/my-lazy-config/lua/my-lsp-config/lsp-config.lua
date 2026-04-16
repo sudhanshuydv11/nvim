@@ -19,12 +19,30 @@ lspconfig.svelte.setup({})
 
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			buffer = bufnr,
+			callback = function()
+				vim.cmd("silent !stylua %")
+				vim.cmd("edit")
+			end,
+		})
+	end,
 })
 
 lspconfig.biome.setup({
 	capabilities = capabilities,
 	cmd = { "node_modules/.bin/biome", "lsp-proxy" },
 	root_dir = lspconfig.util.root_pattern("biome.json"),
+	on_attach = function(client, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			buffer = bufnr,
+			callback = function()
+				vim.cmd("silent !biome format % --fix")
+				vim.cmd("edit")
+			end,
+		})
+	end,
 })
 
 lspconfig.jdtls.setup({
